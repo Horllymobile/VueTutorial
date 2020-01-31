@@ -4,44 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
     <script src="js/vue.js"></script>
-    <style>
-    </style>
+    <title>Learning Vue.js</title>
 </head>
 <body>
+
     <div id="app">
-        <form action="" v-on:click="formHandler">
-            <label>First Name:</label>
-            <input type="text"  v-model="FormHandler.firstname">
-            <br>
-            <br>
-            <label>Last Name:</label>
-            <input type="text" v-model="FormHandler.lastname">
-            <br>
-            <br>
-            <input type="submit">
-        </form>
+        <input type="text" v-model="user">
+        <div>Name: {{ checkforName() }} </div>
+        <button v-on:click="toogleactive">Click for action</button>
+        <div>Active: {{ getActiveStatus() }}</div>
     </div>
+    
 </body>
 <script>
-
     new Vue({
         el:"#app",
-        data:{
-             FormHandler:{
-                firstname:'',
-                lastname:'',
-             }
+      data:{
+          user:'',
+          active:false
+      },
+      methods: {
+        checkforName(){
+            return this.user === 'Olamide' ? 'Welcome' : "Not allowed"
         },
-        methods: {
-            formHandler(){
-                console.log(this.FormHandler);
-            }
-            },
+        getActiveStatus(){
+            return this.active ? "Active" : "Not active"
+        },
+        toogleactive(){
+            this.active = this.active ? false : true 
         }
-           
-    )    
+      },
 
+    })
 </script>
 </html>
