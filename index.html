@@ -12,26 +12,17 @@
     <div id="app">
         <div> {{ value }} </div>
     </div>
-    <div id="app2">
-        <div> {{ value }} </div>
-    </div>
     
 </body>
 <script>
-    new Vue({
-        el:"#app",
+    const app1 = new Vue({
         data:{
-          value:"Instance one working !!!"
+          value:"value changed!!!"
         },
 
     })
-
-    new Vue({
-        el:"#app2",
-        data:{
-          value:"Instance two working !!!"
-        },
-
-    })
+    setTimeout(() =>{
+        app1.$mount('#app')
+    },3000)
 </script>
 </html>
