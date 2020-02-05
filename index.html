@@ -10,13 +10,10 @@
 <body>
 
     <div id="app">
-        <input type="text" v-model="user">
-        <div> {{ checkUser() }} </div>
-
-        <div ref="title">Horlly !!!</div>
-
-        <button @click="toogleActive">Check active</button>
-        <div>{{ checkActive() }}</div>
+        <div> {{ value }} </div>
+    </div>
+    <div id="app2">
+        <div> {{ value }} </div>
     </div>
     
 </body>
@@ -24,22 +21,16 @@
     new Vue({
         el:"#app",
         data:{
-          user:'',
-          active:false
+          value:"Instance one working !!!"
         },
-      methods: {
-        checkUser(){
-            return this.user == 'Olamide' ? 'Welcome' : "Not allowed"
+
+    })
+
+    new Vue({
+        el:"#app2",
+        data:{
+          value:"Instance two working !!!"
         },
-        checkActive(){
-            return this.active == true ? "Active" : "Not active"
-        },
-        toogleActive(){
-            this.active = this.active ? false : true
-            this.$refs.title.style.color = "red";
-            this.$refs.title.style.fontSize = "20px"
-        }
-      },
 
     })
 </script>
