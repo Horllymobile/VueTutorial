@@ -11,28 +11,33 @@
 
     <div id="app">
         <input type="text" v-model="user">
-        <div>Name: {{ checkforName() }} </div>
-        <button v-on:click="toogleactive">Click for action</button>
-        <div>Active: {{ getActiveStatus() }}</div>
+        <div> {{ checkUser() }} </div>
+
+        <div ref="title">Horlly !!!</div>
+
+        <button @click="toogleActive">Check active</button>
+        <div>{{ checkActive() }}</div>
     </div>
     
 </body>
 <script>
     new Vue({
         el:"#app",
-      data:{
+        data:{
           user:'',
           active:false
-      },
+        },
       methods: {
-        checkforName(){
-            return this.user === 'Olamide' ? 'Welcome' : "Not allowed"
+        checkUser(){
+            return this.user == 'Olamide' ? 'Welcome' : "Not allowed"
         },
-        getActiveStatus(){
-            return this.active ? "Active" : "Not active"
+        checkActive(){
+            return this.active == true ? "Active" : "Not active"
         },
-        toogleactive(){
-            this.active = this.active ? false : true 
+        toogleActive(){
+            this.active = this.active ? false : true
+            this.$refs.title.style.color = "red";
+            this.$refs.title.style.fontSize = "20px"
         }
       },
 
